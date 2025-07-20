@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Badminton Shop - Landing Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(120deg, #f7f9fc 60%, #e0e7ff 100%);
+            color: #222;
+        }
+        header {
+            background: linear-gradient(90deg, #009688 60%, #43cea2 100%);
+            color: #fff;
+            padding: 36px 0 18px 0;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.6rem;
+            letter-spacing: 1.5px;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        nav {
+            margin-top: 18px;
+        }
+        nav a {S
+            color: #fff;
+            text-decoration: none;
+            margin: 0 18px;
+            font-weight: 500;
+            font-size: 1.1em;
+            transition: color 0.2s;
+        }
+        nav a:hover {
+            color: #caf0f8;
+        }
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1100px;
+            margin: 48px auto 0 auto;
+            padding: 0 24px;
+            gap: 32px;
+        }
+        .hero-text {
+            flex: 1 1 320px;
+        }
+        .hero-text h2 {
+            font-size: 2.2rem;
+            color: #0066cc;
+            margin-bottom: 0.5em;
+        }
+        .hero-text p {
+            font-size: 1.15em;
+            margin-bottom: 1.2em;
+        }
+        .cta-btn {
+            background: linear-gradient(90deg, #00b4d8 60%, #48cae4 100%);
+            color: #fff;
+            padding: 14px 36px;
+            border: none;
+            border-radius: 28px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,102,204,0.10);
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-btn:hover {
+            background: #0096c7;
+            transform: scale(1.07) translateY(-2px);
+            box-shadow: 0 6px 24px rgba(0,102,204,0.18);
+        }
+        .hero-img img, .feature-box img, .bestseller-img {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .hero-img img:hover, .feature-box img:hover, .bestseller-img:hover {
+            transform: scale(1.08) rotate(-2deg);
+            box-shadow: 0 8px 32px #43cea2;
+        }
+        /* Testimonials */
+        .testimonials {
+            background: #f1f8ff;
+            padding: 48px 0 32px 0;
+            margin: 64px 0 0 0;
+        }
+        .testimonials h2 {
+            text-align: center;
+            color: #009688;
+            margin-bottom: 32px;
+        }
+        .testimonial-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            justify-content: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .testimonial {
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(0,102,204,0.09);
+            padding: 28px 24px 20px 24px;
+            max-width: 320px;
+            min-width: 220px;
+            text-align: center;
+            font-style: italic;
+            position: relative;
+        }
+        .testimonial:before {
+            content: '“';
+            font-size: 2.5em;
+            color: #43cea2;
+            position: absolute;
+            left: 18px;
+            top: 10px;
+        }
+        .testimonial .author {
+            margin-top: 18px;
+            font-weight: bold;
+            color: #009688;
+            font-style: normal;
+        }
+        /* Newsletter */
+        .newsletter {
+            background: #e0f7fa;
+            padding: 40px 24px;
+            max-width: 700px;
+            margin: 64px auto 0 auto;
+            border-radius: 18px;
+            box-shadow: 0 2px 12px #b2dfdb;
+            text-align: center;
+        }
+        .newsletter input[type="email"] {
+            padding: 12px 18px;
+            border-radius: 24px;
+            border: 1px solid #b2dfdb;
+            font-size: 1em;
+            margin-right: 12px;
+            outline: none;
+            width: 220px;
+            max-width: 80vw;
+        }
+        .newsletter button {
+            background: linear-gradient(90deg, #009688 60%, #43cea2 100%);
+            color: #fff;
+            border: none;
+            border-radius: 24px;
+            padding: 12px 28px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .newsletter button:hover {
+            background: #00695c;
+            transform: scale(1.06);
+        }
+        /* Brands & Bestsellers */
+        .brands {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 64px;
+            justify-content: center;
+            align-items: center;
+            margin: 64px auto 0 auto;
+            max-width: 1000px;
+            padding: 0 48px;
+        }
+        .brand-logo {
+            width: 240px;
+            height: 96px;
+            object-fit: contain;
+            filter: grayscale(0.2) brightness(0.95);
+            opacity: 0.85;
+            transition: filter 0.2s, opacity 0.2s, transform 0.2s;
+        }
+        .brand-logo:hover {
+            filter: none;
+            opacity: 1;
+            transform: scale(1.08);
+        }
+        .bestsellers {
+            max-width: 1100px;
+            margin: 64px auto 0 auto;
+            padding: 0 24px;
+        }
+        .bestsellers h2 {
+            color: #009688;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .bestseller-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            justify-content: center;
+        }
+        .bestseller-card {
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px #b2dfdb;
+            padding: 18px 18px 12px 18px;
+            max-width: 220px;
+            min-width: 180px;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .bestseller-card:hover {
+            transform: translateY(-6px) scale(1.04);
+            box-shadow: 0 8px 32px #43cea2;
+        }
+        .bestseller-img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 10px;
+        }
+        .hero-img {
+            flex: 1 1 320px;
+            text-align: center;
+        }
+        .hero-img img {
+            max-width: 340px;
+            width: 90%;
+            border-radius: 18px;
+            box-shadow: 0 4px 32px rgba(0,102,204,0.10);
+        }
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            justify-content: center;
+            max-width: 1100px;
+            margin: 64px auto 0 auto;
+            padding: 0 24px;
+        }
+        .feature-box {
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(0,102,204,0.09);
+            flex: 1 1 260px;
+            min-width: 240px;
+            max-width: 320px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .feature-box:hover {
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: 0 8px 32px rgba(0,102,204,0.13);
+        }
+        .feature-box h3 {
+            color: #0066cc;
+            margin-bottom: 0.5em;
+        }
+        .feature-box p {
+            color: #444;
+        }
+        footer {
+            text-align: center;
+            padding: 28px;
+            background: linear-gradient(90deg, #eeeeee 60%, #e0e7ff 100%);
+            margin-top: 60px;
+            font-size: 1.1em;
+            color: #444;
+            border-top: 1px solid #dbeafe;
+        }
+        @media (max-width: 900px) {
+            .hero, .features {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .hero-img img {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>SmashZone Badminton Shop</h1>
+        <nav>
+            <a href="#products">Products</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    <section class="hero">
+        <div class="hero-text">
+            <h2>Your One-Stop Shop for Badminton Gear</h2>
+            <p>
+                Discover the best rackets, shoes, shuttlecocks, and accessories. Shop top brands and get ready to elevate your game!
+            </p>
+            <button class="cta-btn">Shop Now</button>
+        </div>
+        <div class="hero-img">
+            <img src="https://cdn.dnaindia.com/sites/default/files/styles/full/public/2022/04/17/1505583-screenshot-163.png" alt="Badminton shop illustration">
+        </div>
+    </section>
+    <section class="features" id="products">
+        <div class="feature-box">
+            <img src="https://cdn.shopify.com/s/files/1/0231/3296/2852/files/cm01_large.jpg?v=1726577173" alt="Racket" style="width:80px;height:80px;border-radius:12px;box-shadow:0 2px 8px #b2dfdb;margin-bottom:12px;">
+            <h3>Rackets</h3>
+            <p>Lightweight, powerful, and durable rackets for all skill levels.</p>
+        </div>
+        <div class="feature-box">
+            <img src="https://us.yonex.com/cdn/shop/files/Badminton_Mens_Shoes.jpg?v=1747431656&width=1500" alt="Shoes" style="width:80px;height:80px;border-radius:12px;box-shadow:0 2px 8px #b2dfdb;margin-bottom:12px;">
+            <h3>Shoes</h3>
+            <p>Comfortable, non-slip shoes for quick movement and support.</p>
+        </div>
+        <div class="feature-box">
+            <img src="https://instasport.club/cdn/shop/files/YONEXMavis350_PackOf10_NylonBadmintonShuttlecock_GreenCap.jpg?v=1736398218" alt="Shuttlecocks" style="width:80px;height:80px;border-radius:12px;box-shadow:0 2px 8px #b2dfdb;margin-bottom:12px;">
+            <h3>Shuttlecocks</h3>
+            <p>High-quality feather and nylon shuttlecocks for every match.</p>
+        </div>
+        <div class="feature-box">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4itCxTnZaCrYbC_nC-7Ot3xd9W33e8kgSFg&s" alt="Accessories" style="width:80px;height:80px;border-radius:12px;box-shadow:0 2px 8px #b2dfdb;margin-bottom:12px;">
+            <h3>Accessories</h3>
+            <p>Bags, grips, strings, and more to complete your kit.</p>
+        </div>
+    </section>
+    <!-- Brands Row -->
+    <div class="brands">
+        <img class="brand-logo" src="https://www.yonex.com/media/scandiweb/slider/y/o/yonex.com_top_mobile_english_375x500.png" alt="Yonex">
+        <img class="brand-logo" src="https://shopbadmintononline.com/images/article_manager_uploads/2_1_LN-windstorm-74.jpg" alt="Li-Ning">
+        <img class="brand-logo" src="https://www.cappellasports.com/cdn/shop/files/Victor_Thruster_RYUGA_METALLIC_C_4U_G5_Badminton_Racket_-_7.jpg?v=1747998041&width=300" alt="Victor">
+        <img class="brand-logo" src="https://cdn01.pinkoi.com/product/S7YvHhLM/2/640x530.jpg" alt="Adidas">
+        <img class="brand-logo" src="https://blog.playo.co/wp-content/uploads/2023/06/Best-Yonex-Badminton-Racket-under-2000.jpg" alt="Asics">
+    </div>
+
+    <!-- Bestsellers Gallery -->
+    <section class="bestsellers">
+        <h2>Bestsellers</h2>
+        <div class="bestseller-list">
+            <div class="bestseller-card">
+                <img class="bestseller-img" src="https://www.proracket.net/cdn/shop/products/20210903152659ARdTpXyoGA.jpg?v=1631254667" alt="Yonex Astrox 99 Pro">
+                <h4>Yonex Astrox 99 Pro</h4>
+                <p>Top performance racket for advanced players.</p>
+            </div>
+            <div class="bestseller-card">
+                <img class="bestseller-img" src="https://www.badmintonplaza.com/images/SHB65Z4WEX-WH-A.jpg" alt="Yonex Power Cushion Shoes">
+                <h4>Yonex Power Cushion</h4>
+                <p>Ultimate comfort and grip for fast footwork.</p>
+            </div>
+            <div class="bestseller-card">
+                <img class="bestseller-img" src="https://instasport.club/cdn/shop/files/YONEXMavis350_PackOf10_NylonBadmintonShuttlecock_GreenCap.jpg?v=1736398218" alt="Yonex Mavis 350">
+                <h4>Yonex Mavis 350</h4>
+                <p>Durable nylon shuttlecocks for all levels.</p>
+            </div>
+            <div class="bestseller-card">
+                <img class="bestseller-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUBj2UrXtoHa6KtbypIwUmnP2EsbX2wk42UA&s" alt="Li-Ning Kit Bag">
+                <h4>Li-Ning Kit Bag</h4>
+                <p>Spacious and stylish for all your gear.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <h2>What Our Customers Say</h2>
+        <div class="testimonial-list">
+            <div class="testimonial">
+                "Great selection and fast delivery! My Yonex racket arrived in perfect condition."
+                <div class="author">- Priya S.</div>
+            </div>
+            <div class="testimonial">
+                "The shoes are super comfortable and the prices are unbeatable. Highly recommend SmashZone!"
+                <div class="author">- Rahul M.</div>
+            </div>
+            <div class="testimonial">
+                "Customer support helped me pick the right gear. Will shop again!"
+                <div class="author">- Anjali K.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="newsletter">
+        <h2>Subscribe to Our Newsletter</h2>
+        <p>Get the latest deals, new arrivals, and badminton tips straight to your inbox!</p>
+        <form onsubmit="event.preventDefault();alert('Thank you for subscribing!');">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </section>
+
+    <section id="about" style="max-width:900px;margin:64px auto 0 auto;padding:0 24px;">
+        <h2>About SmashZone</h2>
+        <p>
+            SmashZone is dedicated to providing badminton lovers with the best equipment and service. Whether you are a beginner or a pro, we have something for everyone. Enjoy fast shipping, great prices, and expert advice!
+        </p>
+    </section>
+    <section id="contact" style="max-width:900px;margin:64px auto 0 auto;padding:0 24px;">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:info@smashzone.com">info@smashzone.com</a></p>
+    </section>
+    <footer>
+        &copy; 2025 SmashZone Badminton Shop. All rights reserved.
+    </footer>
+</body>
+</html>
